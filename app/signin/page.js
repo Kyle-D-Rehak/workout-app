@@ -24,7 +24,7 @@ function Page() {
   return (
     <div className="wrapper">
       <div className="form-wrapper">
-        <h1 className="mt-60 mb-30">Sign up</h1>
+        <h1 className="mt-60 mb-30">Sign in</h1>
         <form onSubmit={handleForm} className="form">
           <label htmlFor="email">
             <p>Email</p>
@@ -35,6 +35,7 @@ function Page() {
               name="email"
               id="email"
               placeholder="example@mail.com"
+              className="text-black"
             />
           </label>
           <label htmlFor="password">
@@ -46,6 +47,7 @@ function Page() {
               name="password"
               id="password"
               placeholder="password"
+              className="text-black"
             />
           </label>
           <button type="submit">Sign up</button>

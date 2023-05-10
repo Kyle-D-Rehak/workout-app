@@ -35,6 +35,7 @@ function Page() {
               name="email"
               id="email"
               placeholder="example@mail.com"
+              className="text-black"
             />
           </label>
           <label htmlFor="password">
@@ -46,6 +47,7 @@ function Page() {
               name="password"
               id="password"
               placeholder="password"
+              className="text-black"
             />
           </label>
           <button type="submit">Sign up</button>
