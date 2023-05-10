@@ -10,6 +10,8 @@ function Page() {
     if (user == null) router.push("/");
   }, [user]);
 
+  console.log(user);
+
   return <h1>Only logged in users can view this page</h1>;
 }
 
