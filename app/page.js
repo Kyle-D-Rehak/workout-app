@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useEffect } from 'react';
 import { useAuthContext } from './context/AuthContext';
 import { useRouter } from "next/navigation";
+import LogoutButton from '@/components/LogoutButton';
 
 
 
@@ -22,7 +23,7 @@ export default function Home() {
   
   return (
     <main className="">
-      { auth.user ? <div>Hello, {auth.user.email}!</div> : <></> }
+      { auth.user ? <div>Hello, {auth.user.email}! <LogoutButton/></div> : <></> }
     </main>
   )
 }
