@@ -12,7 +12,6 @@ export default function Home() {
   const router = useRouter();
 
   const auth = useAuthContext();
-  console.log(auth);
 
   useEffect(() => {
     if (auth.user === null) {

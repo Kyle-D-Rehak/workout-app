@@ -21,6 +21,7 @@ function Page() {
     console.log(result);
     return router.push("/");
   };
+
   return (
     <div className="wrapper">
       <div className="form-wrapper">
@@ -50,7 +51,11 @@ function Page() {
               className="text-black"
             />
           </label>
-          <button type="submit">Sign up</button>
+          <button type="submit">Sign in</button>
+          <div>
+            <p>Don't have an account? </p>
+            <button type="button" onClick={() => router.push("/signup")}>Sign up</button>
+          </div>
         </form>
       </div>
     </div>
