@@ -51,6 +51,10 @@ function Page() {
             />
           </label>
           <button type="submit">Sign up</button>
+          <div>
+            <p>Have an account? </p>
+            <button type="button" onClick={() => router.push("/signin")}>Sign in</button>
+          </div>
         </form>
       </div>
     </div>
