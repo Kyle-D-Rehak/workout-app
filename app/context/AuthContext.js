@@ -18,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
       if (user) {
         setUser(user);
       } else {
+        console.log("logout: set user to null");
         setUser(null);
       }
       setLoading(false);
@@ -26,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  console.log(user);
+  console.log("auth state changed, user:", user);
 
   return (
     <AuthContext.Provider value={{ user }}>

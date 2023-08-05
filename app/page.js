@@ -1,28 +1,36 @@
 "use client";
-import Image from 'next/image'
-import React, { useEffect } from 'react';
-import { useAuthContext } from './context/AuthContext';
+import React, { useEffect } from "react";
+import { useAuthContext } from "./context/AuthContext";
 import { useRouter } from "next/navigation";
-import LogoutButton from '@/components/LogoutButton';
-
-
-
+import LogoutButton from "@/components/LogoutButton";
+import userExists from "./firebase/auth/userExists";
 
 export default function Home() {
   const router = useRouter();
-
   const auth = useAuthContext();
 
   useEffect(() => {
-    if (auth.user === null) {
-      router.push("/signin");
-    }
-  }, [auth])
+    (async () => {
+      if (auth.user === null) {
+        console.log("pushed from home to signin");
+        router.push("/signin");
+      } else if (auth.user && !(await userExists(auth))) {
+        console.log("pushed from home to setup");
+        router.push("/setup");
+      }
+    })();
+  }, [auth, router]);
+  console.log(auth.user);
 
-  
   return (
     <main className="">
-      { auth.user ? <div>Hello, {auth.user.email}! <LogoutButton/></div> : <></> }
+      {userExists(auth) && auth.user ? (
+        <div>
+          Hello, {auth.user.email}! <LogoutButton />
+        </div>
+      ) : (
+        <></>
+      )}
     </main>
-  )
+  );
 }
