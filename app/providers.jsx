@@ -9,7 +9,7 @@ export function Providers({
   return (
     <CacheProvider>
       <ChakraProvider theme={theme}>
-        <ColorModeScript initialColorMode={"dark"} />
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         {children}
       </ChakraProvider>
     </CacheProvider>

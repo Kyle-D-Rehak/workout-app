@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { AuthContextProvider } from "@/app/context/AuthContext";
 import { Providers } from "./providers";
+import ToggleColorMode from "@/components/ToggleColorMode";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,7 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Providers>
-          <AuthContextProvider>{children}</AuthContextProvider>
+          <AuthContextProvider>
+            <ToggleColorMode />
+            {children}
+          </AuthContextProvider>
         </Providers>
       </body>
     </html>
