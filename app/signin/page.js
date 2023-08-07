@@ -75,7 +75,7 @@ function Page() {
               </FormLabel>
             </FormControl>
             <Text fontSize="sm">
-              Don't have an account?
+              Don&apos;t have an account?
               <Link pl="1" as={NextLink} href="/signup">
                 <Text as="u">Sign up</Text>
               </Link>
