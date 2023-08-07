@@ -40,7 +40,7 @@ function Page() {
     <Flex mt="12" justify="center" w="100%">
       <Card maxW="md" align="center">
         <CardHeader p="0" mt="4">
-          <Heading>Sign in</Heading>
+          <Heading>Sign In</Heading>
         </CardHeader>
         <CardBody>
           <form onSubmit={handleForm}>
@@ -81,7 +81,7 @@ function Page() {
               </Link>
             </Text>
             <Button w="100%" mt="4" type="submit">
-              Sign in
+              Sign In
             </Button>
           </form>
         </CardBody>
