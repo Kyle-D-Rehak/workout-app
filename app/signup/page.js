@@ -2,6 +2,20 @@
 import React from "react";
 import signUp from "../firebase/auth/signup";
 import { useRouter } from "next/navigation";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Text,
+} from "@chakra-ui/react";
+import NextLink from "next/link";
 
 function Page() {
   const [email, setEmail] = React.useState("");
@@ -22,42 +36,56 @@ function Page() {
     return router.push("/admin");
   };
   return (
-    <div className="wrapper">
-      <div className="form-wrapper">
-        <h1 className="mt-60 mb-30">Sign up</h1>
-        <form onSubmit={handleForm} className="form">
-          <label htmlFor="email">
-            <p>Email</p>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              type="email"
-              name="email"
-              id="email"
-              placeholder="example@mail.com"
-              className="text-black"
-            />
-          </label>
-          <label htmlFor="password">
-            <p>Password</p>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-              className="text-black"
-            />
-          </label>
-          <button type="submit">Sign up</button>
-          <div>
-            <p>Have an account? </p>
-            <button type="button" onClick={() => router.push("/signin")}>Sign in</button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <Flex mt="12" justify="center" w="100%">
+      <Card maxW="md" align="center">
+        <CardHeader p="0" mt="4">
+          <Heading>Sign Up</Heading>
+        </CardHeader>
+        <CardBody>
+          <form onSubmit={handleForm}>
+            <FormControl>
+              <FormLabel>
+                Email
+                <Input
+                  onChange={(e) => setEmail(e.target.value)}
+                  isRequired={true}
+                  errorBorderColor="red"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="example@mail.com"
+                  className="text-black"
+                />
+              </FormLabel>
+            </FormControl>
+            <FormControl>
+              <FormLabel mb="0">
+                Password
+                <Input
+                  onChange={(e) => setPassword(e.target.value)}
+                  isRequired
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="password"
+                  className="text-black"
+                  mb="0"
+                />
+              </FormLabel>
+            </FormControl>
+            <Text fontSize="sm">
+              Already have an account?
+              <Link pl="1" as={NextLink} href="/signin">
+                <Text as="u">Sign in</Text>
+              </Link>
+            </Text>
+            <Button w="100%" mt="4" type="submit">
+              Sign Up
+            </Button>
+          </form>
+        </CardBody>
+      </Card>
+    </Flex>
   );
 }
 
