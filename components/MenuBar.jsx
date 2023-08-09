@@ -13,11 +13,11 @@ const MenuBar = () => {
   return (
     <Box pos="absolute" top={0} h="100vh" w="100vw" zIndex={-99}>
     <Flex p='6' pos="absolute" bottom={0} w="100%">
-        <Link as={NextLink} href='/workout'>{path === '/workout' ? <EditIcon boxSize={6} color="red"/> : <EditIcon boxSize={6} />}</Link>
+        <Link as={NextLink} href='/workout'>{path === '/workout' ? <EditIcon boxSize={6} color="blue.500"/> : <EditIcon boxSize={6} />}</Link>
         <Spacer></Spacer>
-        <Link as={NextLink} href='/history'>{path === '/history' ? <CalendarIcon boxSize={6} color="red"/> : <CalendarIcon boxSize={6} />}</Link>
+        <Link as={NextLink} href='/history'>{path === '/history' ? <CalendarIcon boxSize={6} color="blue.500"/> : <CalendarIcon boxSize={6} />}</Link>
         <Spacer></Spacer>
-        <Link as={NextLink} href='/settings'>{path === '/settings' ? <HamburgerIcon boxSize={8} color="red"/> : <HamburgerIcon boxSize={8} />}</Link>
+        <Link as={NextLink} href='/settings'>{path === '/settings' ? <HamburgerIcon boxSize={8} color="blue.500"/> : <HamburgerIcon boxSize={8} />}</Link>
     </Flex>
     </Box>
   )
