@@ -20,7 +20,11 @@ const exercises = [
         level: "Beginner",
         equipment: "None",
       },
-      { exercise: "A", muscle: "", level: "", equipment: "" },
+    ],
+  },
+  {
+    letter: "A",
+    exercises: [
       {
         exercise: "Ab Rollouts",
         muscle: "Abs",
