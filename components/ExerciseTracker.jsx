@@ -22,7 +22,10 @@ const ExerciseTracker = (props) => {
         <Heading as="h2" size="md">
           {props.exercise.name}
         </Heading>
-        <ExerciseSelectionModal />
+        <ExerciseSelectionModal
+          updateExerciseName={props.updateExerciseName}
+          exerciseIndex={props.exerciseIndex}
+        />
       </Flex>
       <Grid gridTemplateColumns="1fr 4fr 4fr 4fr 1fr" gap={2}>
         <GridItem justifySelf="center">

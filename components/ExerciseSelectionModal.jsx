@@ -32,6 +32,17 @@ const ExerciseSelectionModal = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchValue, setSearchValue] = useState("");
   const [type, setType] = useState();
+  const [selection, setSelection] = useState();
+
+  const submitSelection = () => {
+    if (selection !== undefined && props.exerciseIndex === undefined) {
+      props.addExercise(selection);
+      onClose();
+    } else if (selection !== undefined && props.exerciseIndex !== undefined) {
+      props.updateExerciseName(selection, props.exerciseIndex);
+      onClose();
+    }
+  };
 
   return (
     <React.Fragment>
@@ -107,14 +118,27 @@ const ExerciseSelectionModal = (props) => {
                       return (
                         <>
                           <Tr key={section.letter}>
-                            <Th>{section.letter}</Th>
+                            <Th key={`${section.letter} H`}>
+                              {section.letter}
+                            </Th>
                           </Tr>
                           {section.exercises.map((index) => (
                             <Tr key={index.exercise}>
                               <Td
+                                key={`${index.exercise} D`}
+                                tabIndex={0}
+                                onClick={(e) => {
+                                  e.target.focus();
+                                  setSelection(e.target.innerHTML);
+                                }}
                                 _hover={{
                                   cursor: "pointer",
                                   color: "blue.500",
+                                }}
+                                _focus={{
+                                  color: "blue.500",
+                                  bgColor: "hsla(232, 30%, 70%, 0.1)",
+                                  fontWeight: "500",
                                 }}
                               >
                                 {index.exercise}
@@ -137,9 +161,20 @@ const ExerciseSelectionModal = (props) => {
                                 return (
                                   <Tr key={index.exercise}>
                                     <Td
+                                      key={`${index.exercise} D`}
+                                      tabIndex={0}
+                                      onClick={(e) => {
+                                        e.target.focus();
+                                        setSelection(e.target.innerHTML);
+                                      }}
                                       _hover={{
                                         cursor: "pointer",
                                         color: "blue.500",
+                                      }}
+                                      _focus={{
+                                        color: "blue.500",
+                                        bgColor: "hsla(232, 30%, 70%, 0.1)",
+                                        fontWeight: "500",
                                       }}
                                     >
                                       {index.exercise}
@@ -166,9 +201,20 @@ const ExerciseSelectionModal = (props) => {
                                 return (
                                   <Tr key={index.exercise}>
                                     <Td
+                                      key={`${index.exercise} D`}
+                                      tabIndex={0}
+                                      onClick={(e) => {
+                                        e.target.focus();
+                                        setSelection(e.target.innerHTML);
+                                      }}
                                       _hover={{
                                         cursor: "pointer",
                                         color: "blue.500",
+                                      }}
+                                      _focus={{
+                                        color: "blue.500",
+                                        bgColor: "hsla(232, 30%, 70%, 0.1)",
+                                        fontWeight: "500",
                                       }}
                                     >
                                       {index.exercise}
@@ -187,7 +233,7 @@ const ExerciseSelectionModal = (props) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" w="100%" onClick={onClose}>
+            <Button colorScheme="blue" w="100%" onClick={submitSelection}>
               Add Exercise
             </Button>
           </ModalFooter>

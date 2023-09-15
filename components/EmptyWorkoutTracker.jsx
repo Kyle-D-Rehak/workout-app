@@ -74,14 +74,10 @@ const EmptyWorkoutTracker = () => {
             ))}
 
             <Flex justifyContent="center">
-              <ExerciseSelectionModal isButton={true} />
-              <Button
-                colorScheme="red"
-                w="100%"
-                onClick={() => addExercise("test")}
-              >
-                Add Exercise
-              </Button>
+              <ExerciseSelectionModal
+                isButton={true}
+                addExercise={addExercise}
+              />
             </Flex>
           </DrawerBody>
 
