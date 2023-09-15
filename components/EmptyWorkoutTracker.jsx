@@ -29,6 +29,16 @@ const EmptyWorkoutTracker = () => {
     setWorkout(tempState);
   };
 
+  const addSet = (targetIndex) => {
+    let tempState = { ...workout };
+    tempState.exercises[targetIndex].sets.push({
+      weight: "",
+      reps: "",
+      done: false,
+    });
+    setWorkout(tempState);
+  };
+
   return (
     <>
       <Button ref={btnRef} colorScheme="blue" onClick={onOpen}>
@@ -47,7 +57,12 @@ const EmptyWorkoutTracker = () => {
 
           <DrawerBody>
             {workout.exercises.map((exercise, i) => (
-              <ExerciseTracker exercise={exercise} key={`exercise${i}`} />
+              <ExerciseTracker
+                exercise={exercise}
+                key={`exercise${i}`}
+                exerciseIndex={i}
+                addSet={addSet}
+              />
             ))}
 
             <Flex justifyContent="center">

@@ -48,28 +48,39 @@ const ExerciseTracker = (props) => {
             Done
           </Heading>
         </GridItem>
-        <GridItem placeSelf="center">1</GridItem>
-        <GridItem placeSelf="center start">100lbs x 5</GridItem>
-        <GridItem>
-          <NumberInput size="sm" min={0} max={9999}>
-            <NumberInputField />
-          </NumberInput>
-        </GridItem>
-        <GridItem>
-          <NumberInput size="sm" min={0} max={999}>
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-        </GridItem>
-        <GridItem placeSelf="center">
-          <Checkbox size="lg" colorScheme="green"></Checkbox>
-        </GridItem>
+
+        {props.exercise.sets.map((set, i) => (
+          <>
+            <GridItem placeSelf="center">{i + 1}</GridItem>
+            <GridItem placeSelf="center start">-----</GridItem>
+            <GridItem>
+              <NumberInput size="sm" min={0} max={9999}>
+                <NumberInputField />
+              </NumberInput>
+            </GridItem>
+            <GridItem>
+              <NumberInput size="sm" min={0} max={999}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </GridItem>
+            <GridItem placeSelf="center">
+              <Checkbox size="lg" colorScheme="green"></Checkbox>
+            </GridItem>
+          </>
+        ))}
       </Grid>
       <Flex justifyContent="center" alignItems="center">
-        <Button colorScheme="blue" mt={8} w="100%" size="sm">
+        <Button
+          colorScheme="blue"
+          mt={8}
+          w="100%"
+          size="sm"
+          onClick={() => props.addSet(props.exerciseIndex)}
+        >
           Add Set
         </Button>
       </Flex>
