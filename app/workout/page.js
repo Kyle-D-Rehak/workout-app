@@ -1,5 +1,6 @@
 "use client";
 import ExerciseSelectionModal from "@/components/ExerciseSelectionModal";
+import EmptyWorkoutTracker from "@/components/EmptyWorkoutTracker";
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 
@@ -13,7 +14,7 @@ function Page() {
         <Heading as="h2" size="sm" mb="1">
           Quick Start
         </Heading>
-        <Button colorScheme="blue">Start an Empty Workout</Button>
+        <EmptyWorkoutTracker />
       </Box>
       <Box>
         <ExerciseSelectionModal />
