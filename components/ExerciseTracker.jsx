@@ -13,14 +13,16 @@ import {
   NumberInputStepper,
 } from "@chakra-ui/react";
 import React from "react";
+import ExerciseSelectionModal from "./ExerciseSelectionModal";
 
 const ExerciseTracker = (props) => {
   return (
     <Box bg="gray.600" borderRadius="lg" p={4} mb={4}>
-      <Flex mb="2">
+      <Flex mb="2" alignItems="center" gap={2}>
         <Heading as="h2" size="md">
           {props.exercise.name}
         </Heading>
+        <ExerciseSelectionModal />
       </Flex>
       <Grid gridTemplateColumns="1fr 4fr 4fr 4fr 1fr" gap={2}>
         <GridItem justifySelf="center">

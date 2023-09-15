@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import ExerciseTracker from "./ExerciseTracker";
 import React, { useState } from "react";
+import ExerciseSelectionModal from "./ExerciseSelectionModal";
 
 const EmptyWorkoutTracker = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,6 +37,12 @@ const EmptyWorkoutTracker = () => {
       reps: "",
       done: false,
     });
+    setWorkout(tempState);
+  };
+
+  const updateExerciseName = (newName, targetIndex) => {
+    let tempState = { ...workout };
+    tempState.exercises[targetIndex].name = newName;
     setWorkout(tempState);
   };
 
@@ -62,10 +69,12 @@ const EmptyWorkoutTracker = () => {
                 key={`exercise${i}`}
                 exerciseIndex={i}
                 addSet={addSet}
+                updateExerciseName={updateExerciseName}
               />
             ))}
 
             <Flex justifyContent="center">
+              <ExerciseSelectionModal isButton={true} />
               <Button
                 colorScheme="red"
                 w="100%"

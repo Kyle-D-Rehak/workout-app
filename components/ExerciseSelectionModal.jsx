@@ -23,18 +23,30 @@ import {
   InputGroup,
   InputRightElement,
   Select,
+  IconButton,
 } from "@chakra-ui/react";
 import exercises from "@/app/exercises";
-import { SearchIcon } from "@chakra-ui/icons";
+import { EditIcon, SearchIcon } from "@chakra-ui/icons";
 
-const ExerciseSelectionModal = () => {
+const ExerciseSelectionModal = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchValue, setSearchValue] = useState("");
   const [type, setType] = useState();
 
   return (
     <React.Fragment>
-      <Button onClick={onOpen}>Exercises</Button>
+      {props.isButton ? (
+        <Button colorScheme="red" w="100%" onClick={onOpen}>
+          Add Exercise
+        </Button>
+      ) : (
+        <IconButton
+          aria-label="Select exercise"
+          icon={<EditIcon />}
+          onClick={onOpen}
+          size="sm"
+        />
+      )}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
