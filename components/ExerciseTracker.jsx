@@ -14,12 +14,12 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const ExerciseTracker = () => {
+const ExerciseTracker = (props) => {
   return (
     <Box bg="gray.600" borderRadius="lg" p={4} mb={4}>
       <Flex mb="2">
         <Heading as="h2" size="md">
-          New Exercise
+          {props.exercise.name}
         </Heading>
       </Flex>
       <Grid gridTemplateColumns="1fr 4fr 4fr 4fr 1fr" gap={2}>

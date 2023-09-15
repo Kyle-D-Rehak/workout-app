@@ -1,3 +1,4 @@
+"use client";
 import {
   Button,
   Drawer,
@@ -16,8 +17,17 @@ import React, { useState } from "react";
 
 const EmptyWorkoutTracker = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { workout, setWorkout } = useState({ workoutName: "" });
+  const [workout, setWorkout] = useState({ exercises: [] });
   const btnRef = React.useRef();
+
+  const addExercise = (newExercise) => {
+    let tempState = { ...workout };
+    tempState.exercises.push({
+      name: newExercise,
+      sets: [{ weight: "", reps: "", done: false }],
+    });
+    setWorkout(tempState);
+  };
 
   return (
     <>
@@ -36,15 +46,29 @@ const EmptyWorkoutTracker = () => {
           <DrawerHeader>New Workout</DrawerHeader>
 
           <DrawerBody>
-            <ExerciseTracker />
+            {workout.exercises.map((exercise, i) => (
+              <ExerciseTracker exercise={exercise} key={`exercise${i}`} />
+            ))}
+
             <Flex justifyContent="center">
-              <Button colorScheme="red" w="100%">
+              <Button
+                colorScheme="red"
+                w="100%"
+                onClick={() => addExercise("test")}
+              >
                 Add Exercise
               </Button>
             </Flex>
           </DrawerBody>
 
           <DrawerFooter>
+            <Button
+              variant="outline"
+              mr={3}
+              onClick={() => setWorkout({ exercises: [] })}
+            >
+              Clear
+            </Button>
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
